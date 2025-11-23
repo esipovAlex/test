@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 public class LengthCheck extends ValidatorHandler {
 
     @Override
-    protected boolean doValidate(String input, List<String> useLetter) {
+    protected boolean doValidate(String input, List<Character> useLetter) {
         Predicate<String> check = line -> line.length() == 1;
         return check.test(input);
     }

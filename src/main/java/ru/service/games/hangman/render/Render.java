@@ -28,10 +28,17 @@ public class Render implements Renderer {
     }
 
     @Override
-    public void show(char[] showWord, int max, int errNumber) {
+    public void show(char[] showWord, int tryOut) {
         gallows.forEach(out::println);
         out.println(Message.SHOW_WORD.getText() + String.valueOf(showWord));
-        out.println(Message.TRY_OUT.getText() + (max - errNumber));
+        out.println(Message.TRY_OUT.getText() + tryOut);
+    }
+
+    @Override
+    public void result(String result, String word, char[] initCh) {
+        out.println(result);
+        out.println(Message.SOURCE_WORD.getText() + word);
+        out.println(Message.YOUR_INPUT.getText() + String.valueOf(initCh));
     }
 
     private List<String> emptyGallows() {

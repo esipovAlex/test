@@ -6,5 +6,5 @@ public interface ValidCheck {
 
     void setNext(ValidCheck next);
 
-    void validate(String input, List<String> useLetter);
+    void validate(String input, List<Character> useLetter);
 }

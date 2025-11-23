@@ -1,11 +1,9 @@
 package ru.service;
 
 import ru.service.actions.*;
-import ru.service.actions.*;
 import ru.service.games.Game;
 import ru.service.games.fizzbuzz.RefFool;
-import ru.service.games.hangman.ProcessHangman;
-import ru.service.inout.*;
+import ru.service.games.hangman.GameProcessHangman;
 import ru.service.inout.*;
 import ru.service.model.GameNames;
 import ru.service.model.StoreAndGame;
@@ -44,12 +42,12 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        String fileForHangman = "src/main/java/ru/esipov/service/files/dict.txt";
+        String fileForHangman = "src/main/java/ru/service/files/dict.txt";
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
         Map<GameNames, Game> gameMap = new EnumMap<>(GameNames.class);
         RefFool refFool = new RefFool();
-        ProcessHangman hangman = new ProcessHangman(fileForHangman);
+        GameProcessHangman hangman = new GameProcessHangman(fileForHangman);
         gameMap.put(refFool.getName(), refFool);
         gameMap.put(hangman.getName(), hangman);
         try (StoreResult storeResult = new MemStoreResult()){

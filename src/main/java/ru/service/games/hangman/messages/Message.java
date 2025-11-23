@@ -13,7 +13,8 @@ public enum Message {
     ONLY_ONE_LETTER("Введенное слово должно содержать только 1 символ."),
     INPUT_ONLY_SPACES("Введенное слово содержит только одни пробелы."),
     INPUT_DUPLICATE("Буква уже была использована."),
-    ONLY_CYRILLIC("Допускаются только русские буквы в нижнем регистре.");
+    ONLY_CYRILLIC("Допускаются только русские буквы в нижнем регистре."),
+    USED_LETTERS("Использованные буквы: ");
     private final String text;
     Message(String text) { this.text = text; }
 

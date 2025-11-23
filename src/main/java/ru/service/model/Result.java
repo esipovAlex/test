@@ -17,6 +17,13 @@ public class Result {
     public Result() {
     }
 
+    public Result(String name, GameResult gameResult, LocalDateTime finished) {
+        this.name = name;
+        this.gameResult = gameResult;
+        this.finished = finished;
+        this.duration = Duration.between(created, finished).toSeconds();
+    }
+
     public LocalDateTime getFinished() {
         return finished;
     }

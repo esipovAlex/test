@@ -8,9 +8,9 @@ import java.util.function.Predicate;
 public class DuplicateCheck extends ValidatorHandler {
 
     @Override
-    protected boolean doValidate(String input, List<String> useLetter) {
-        Predicate<String> check = useLetter::contains;
-        return check.negate().test(input);
+    protected boolean doValidate(String input, List<Character> useLetter) {
+        Predicate<Character> check = useLetter::contains;
+        return check.negate().test(input.charAt(0));
     }
 
     @Override

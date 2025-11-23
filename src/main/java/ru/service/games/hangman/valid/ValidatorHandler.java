@@ -15,7 +15,7 @@ public abstract class ValidatorHandler implements ValidCheck{
     }
 
     @Override
-    public void validate(String input, List<String> useLetter) {
+    public void validate(String input, List<Character> useLetter) {
         if (!doValidate(input, useLetter)) {
             throw new ValidationException(getErrorMessage().getText());
         }
@@ -24,7 +24,7 @@ public abstract class ValidatorHandler implements ValidCheck{
         }
     }
 
-    protected abstract boolean doValidate(String input, List<String> useLetter);
+    protected abstract boolean doValidate(String input, List<Character> useLetter);
 
     protected abstract Message getErrorMessage();
 }

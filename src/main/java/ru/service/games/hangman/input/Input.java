@@ -11,23 +11,25 @@ import static java.lang.System.out;
 
 public class Input implements InputLetter {
 
-    private final List<String> useLetter;
+    private final List<Character> usedLetter;
 
     public Input() {
-        useLetter = new LinkedList<>();
+        usedLetter = new LinkedList<>();
     }
 
     @Override
-    public String getLetter(Scanner scanner, Validator validator) {
-        out.println("использованные буквы: " + useLetter);
+    public Character getLetter(Validator validator) {
+        out.println(Message.USED_LETTERS.getText() + usedLetter);
         boolean notValid = true;
-        String letter = "";
+        String input = "";
+        Scanner scanner = new Scanner(System.in);
         while (notValid) {
             out.print(Message.INPUT_LETTER.getText());
-            letter = scanner.nextLine().trim();
-            notValid = !validator.valid(letter, useLetter);
+            input = scanner.nextLine().trim();
+            notValid = !validator.valid(input, usedLetter);
         }
-        useLetter.add(letter);
+        Character letter = input.charAt(0);
+        usedLetter.add(letter);
         return letter;
     }
 }

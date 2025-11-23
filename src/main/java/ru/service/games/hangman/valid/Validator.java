@@ -11,14 +11,14 @@ public class Validator {
 
     public Validator() {
         this.validationHandler = new ValidatorBuilder()
-                .addValidator(new CyrillicCheck())
-                .addValidator(new DuplicateCheck())
                 .addValidator(new EmptyCheck())
                 .addValidator(new LengthCheck())
+                .addValidator(new CyrillicCheck())
+                .addValidator(new DuplicateCheck())
                 .build();
     }
 
-    public boolean valid(String letter, List<String> useLetter) {
+    public boolean valid(String letter, List<Character> useLetter) {
         try {
             validationHandler.validate(letter, useLetter);
         } catch (ValidationException e) {

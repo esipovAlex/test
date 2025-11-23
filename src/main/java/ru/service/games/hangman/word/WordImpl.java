@@ -1,7 +1,6 @@
 package ru.service.games.hangman.word;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,9 +25,9 @@ public class WordImpl implements Word {
     }
 
     @Override
-    public char[] createShowWord(char[] showWord, String letter) {
+    public char[] createShowWord(char[] showWord, Character letter) {
         char[] chars = word.toCharArray();
-        char input = letter.charAt(0);
+        char input = letter;
         int length = chars.length;
         char[] resultCharArray = new char[length];
         for (int i = 0; i < length; i++) {
@@ -40,10 +39,10 @@ public class WordImpl implements Word {
     }
 
     @Override
-    public Set<String> setStr() {
+    public Set<Character> setStr() {
         return word.chars()
                 .mapToObj(c -> (char) c)
-                .map(Objects::toString)
+//                .map(Objects::toString)
                 .collect(Collectors.toSet());
     }
 }

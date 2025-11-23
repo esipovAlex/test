@@ -10,7 +10,7 @@ public class CyrillicCheck extends ValidatorHandler {
     private final Pattern pattern = Pattern.compile("^[а-яё]+$");
 
     @Override
-    protected boolean doValidate(String input, List<String> useLetter) {
+    protected boolean doValidate(String input, List<Character> useLetter) {
         return pattern.matcher(input).matches();
     }
 

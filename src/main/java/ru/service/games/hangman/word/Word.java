@@ -6,8 +6,6 @@ public interface Word {
 
     String getInitWord();
     char[] showWord();
-    char[] createShowWord(char[] showWord, String letter);
-    Set<String> setStr();
-
-
+    char[] createShowWord(char[] showWord, Character letter);
+    Set<Character> setStr();
 }

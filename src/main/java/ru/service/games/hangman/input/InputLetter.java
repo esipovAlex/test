@@ -6,5 +6,5 @@ import java.util.Scanner;
 
 public interface InputLetter {
 
-    String getLetter(Scanner scanner, Validator validator);
+    Character getLetter(Validator validator);
 }

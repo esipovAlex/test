@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 public class EmptyCheck extends ValidatorHandler {
 
     @Override
-    protected boolean doValidate(String input, List<String> useLetter) {
+    protected boolean doValidate(String input, List<Character> useLetter) {
         Predicate<String> check = String::isEmpty;
         return check.negate().test(input);
     }

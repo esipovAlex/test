@@ -6,5 +6,7 @@ public interface Renderer {
 
     void prepare(int errNumber);
 
-    void show(char[] showWord, int max, int errNumber);
+    void show(char[] showWord, int tryOut);
+
+    void result(String result, String word, char[] initCh);
 }

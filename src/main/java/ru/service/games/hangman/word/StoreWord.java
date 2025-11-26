@@ -37,7 +37,7 @@ public class StoreWord {
     }
 
     public static String getRandomLine(String fileName, int total) {
-        int nextInt = random.nextInt(0, total);
+        int nextInt = RANDOM.nextInt(0, total);
         return getLineByNumber(fileName, nextInt).orElse("");
     }
 }

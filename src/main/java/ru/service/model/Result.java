@@ -10,17 +10,18 @@ public class Result {
     private int id;
     private String name;
     private GameResult gameResult;
-    private final LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now();
     private LocalDateTime finished = LocalDateTime.now();
     private Long duration;
 
     public Result() {
     }
 
-    public Result(String name, GameResult gameResult, LocalDateTime finished) {
+    public Result(String name, GameResult gameResult, LocalDateTime created, LocalDateTime finished) {
         this.name = name;
         this.gameResult = gameResult;
         this.finished = finished;
+        this.created = created;
         this.duration = Duration.between(created, finished).toSeconds();
     }
 

@@ -1,11 +1,11 @@
 package ru.service.games.hangman.word;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Optional;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.Random;
-import java.util.stream.Stream;
 
 public class StoreWord {
 
@@ -14,30 +14,41 @@ public class StoreWord {
     private StoreWord() {
     }
 
-    public static long countLinesWithStream(String fileName) {
-        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-            return stream.count();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    private static Optional<String> getLineByNumber(String fileName, long number) {
-        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-            long n = number - 1L;
-            if (n <= 0) {
-                return stream.findFirst();
+    public static long countLinesWithStream(String path) {
+        try (InputStream inputStream = StoreWord.class.getResourceAsStream(path)) {
+            if (inputStream == null) {
+                System.err.println("Файл не найден в classpath: " + path);
+                return 0;
             }
-            return stream.skip(n).findFirst();
-        } catch (IOException e) {
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+                return reader.lines().count();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
+            return 0;
         }
-        return Optional.empty();
     }
 
     public static String getRandomLine(String fileName, int total) {
         int nextInt = RANDOM.nextInt(0, total);
-        return getLineByNumber(fileName, nextInt).orElse("");
+        String line = "";
+            long count = 0L;
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(
+                            Objects.requireNonNull(
+                                    StoreWord.class.getResourceAsStream(fileName)),
+                            StandardCharsets.UTF_8))) {
+                while ((line = reader.readLine()) != null) {
+                    if (count == nextInt) {
+                        break;
+                    }
+                    count++;
+                }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return line;
     }
 }

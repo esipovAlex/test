@@ -42,7 +42,7 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        String fileForHangman = "src/main/java/ru/service/files/dict.txt";
+        String fileForHangman = "/files/dict.txt";
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
         Map<GameNames, Game> gameMap = new EnumMap<>(GameNames.class);

@@ -3,6 +3,7 @@ package ru.service.games.hangman.input;
 import ru.service.games.hangman.valid.Validator;
 import ru.service.games.hangman.messages.Message;
 
+import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,6 +23,7 @@ public class Input implements InputLetter {
         out.println(Message.USED_LETTERS.getText() + usedLetter);
         boolean notValid = true;
         String input = "";
+//        Scanner scanner = new Scanner(System.in, Charset.forName("IBM866"));
         Scanner scanner = new Scanner(System.in);
         while (notValid) {
             out.print(Message.INPUT_LETTER.getText());

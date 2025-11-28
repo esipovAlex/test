@@ -42,7 +42,6 @@ public class WordImpl implements Word {
     public Set<Character> setStr() {
         return word.chars()
                 .mapToObj(c -> (char) c)
-//                .map(Objects::toString)
                 .collect(Collectors.toSet());
     }
 }

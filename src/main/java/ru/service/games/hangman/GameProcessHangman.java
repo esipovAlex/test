@@ -31,6 +31,7 @@ public class GameProcessHangman implements Game {
 
     @Override
     public Result startGame()  {
+        LocalDateTime startTime = LocalDateTime.now();
         Word wordI = new WordImpl(path, totalLines);
         String word = wordI.getInitWord();
         char[] showWord = wordI.showWord();
@@ -54,6 +55,7 @@ public class GameProcessHangman implements Game {
         Result result = new Result(
                 getName().getText(),
                 errNumber == MAX_ATTEMPT ? GameResult.LOOSER : GameResult.WINNER,
+                startTime,
                 LocalDateTime.now()
         );
         storeResult.add(result);
